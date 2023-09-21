@@ -4,11 +4,10 @@ Repository to test, setup and publish local IDE dev azure functions, repo in Git
 
 ### Two options to deploy to Azure
 
-- Via Azure extension within Visual Studio Code
-- Via github workflow. See *yml file
+- direct deploy via Azure extension within Visual Studio Code
+- Via push or pull-request github actions workflow
 
 
 ## TODO
 
-- add pull request
 - continue with bindings https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp
