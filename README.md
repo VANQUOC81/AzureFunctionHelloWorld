@@ -10,4 +10,5 @@ Repository to test, setup and publish local IDE dev azure functions, repo in Git
 
 ## TODO
 
+- CONFIGURING YML for department slots
 - continue with bindings https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp
