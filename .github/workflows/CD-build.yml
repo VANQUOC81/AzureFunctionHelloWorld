@@ -1,13 +1,9 @@
-name: Deploy DotNet project to Azure Function App
+name: Continuous Deployment Build DotNet Azure Function App project
 
 # TRIGGERS
 on:
     push: # WHAT EVENT
       branches: # WHICH BRANCH
-        - master
-    pull_request:
-      types: [opened, synchronize, reopened] # ACTION TYPE OF PR'S
-      branches:
         - master
 
 # ENVIRONMENT CONFIGURATION
@@ -25,26 +21,6 @@ env:
 
 # JOBS
 jobs:
-  CI-build:
-    if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize' || github.event.action == 'reopened')
-    runs-on: windows-latest
-    environment: prod
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@v3
-
-    - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-        
-    - name: 'Resolve Project Dependencies Using Dotnet'
-      shell: pwsh
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        dotnet build --configuration Release --output ./output
-        popd
-
   CD-build:
     if: github.event_name == 'push'
     runs-on: windows-latest

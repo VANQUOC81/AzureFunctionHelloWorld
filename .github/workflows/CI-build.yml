@@ -1,4 +1,4 @@
-name: CI Build DotNet Azure Function App project
+name: Continuous Integration Build DotNet Azure Function App project
 
 # TRIGGERS
 on:
