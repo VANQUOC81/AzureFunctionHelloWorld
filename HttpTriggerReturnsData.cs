@@ -16,12 +16,14 @@ namespace Company.Function
             var logger = context.GetLogger<HttpTriggerReturnsData>();
             logger.LogInformation("C# HTTP trigger function processed a request.");
 
-            // calling library function
+            // Calling library function
             Task<string> reverseStringAsync = LibraryFunctions.ReverseStringAsync("Quoc");
 
             logger.LogInformation("Continue procedural code.");
 
-            // suspend code, return to call, wait to for completion before continuation
+            // suspend code, return to caller which is someone who is calling this API endpoint. 
+            // Doing this ensures the endpoint responsive and non-blocking for new requests. 
+            // Once the await is over it will come back and resume the code and give back the awaited response.
             var result = await reverseStringAsync;
 
             var response = req.CreateResponse(HttpStatusCode.OK);
