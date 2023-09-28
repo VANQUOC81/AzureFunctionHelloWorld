@@ -10,8 +10,11 @@ namespace Common
             return random.Next(range);
         }
 
-        public static string ReverseString(string input)
+        public async static Task<string> ReverseStringAsync(string input)
         {
+            // pauze thread
+            await Task.Delay(10000);
+
             // Convert the string to a character array
             char[] charArray = input.ToCharArray();
 
