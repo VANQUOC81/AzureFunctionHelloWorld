@@ -12,7 +12,7 @@ namespace Common
 
         public async static Task<string> ReverseStringAsync(string input)
         {
-            // pauze thread
+            // Suspend task and return to the caller
             await Task.Delay(10000);
 
             // Convert the string to a character array

@@ -10,22 +10,25 @@ namespace Company.Function
     {
         [Function("HttpTriggerReturnsData")]
         public static async Task<HttpResponseData> RunAsync(
-       [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req,
-       FunctionContext context)
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req,
+        FunctionContext context)
         {
             var logger = context.GetLogger<HttpTriggerReturnsData>();
             logger.LogInformation("C# HTTP trigger function processed a request.");
 
             // calling library function
-            var result = await LibraryFunctions.ReverseStringAsync("Quoc");
-                        
-            logger.LogInformation("await done ReverseStringAsync completed it's operation.");
+            Task<string> reverseStringAsync = LibraryFunctions.ReverseStringAsync("Quoc");
+
+            logger.LogInformation("Continue procedural code.");
+
+            // suspend code, return to call, wait to for completion before continuation
+            var result = await reverseStringAsync;
 
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
-
-            // the await keyword allows the code to pause and wait for the asynchronous operation to complete, but it doesn't block the thread, enabling other tasks to be processed concurrently.
-            await response.WriteStringAsync($"Welcome to Azure Functions HttpTriggerReturnsData asynchronously with a result of {result}!");
+            // the await keyword allows the code to pause and wait for the asynchronous operation to 
+            // complete and returns to the caller, but it doesn't block the thread, enabling other tasks to be processed concurrently.
+            await response.WriteStringAsync($"Welcome to Azure Functions HttpTriggerReturnsData asynchronously. ReverseStringAsync result: {result}!");
 
             return response;
         }
