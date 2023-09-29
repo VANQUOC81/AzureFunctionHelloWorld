@@ -1,4 +1,4 @@
-namespace AzureFunctionHelloWorld.Tests;
+namespace Tests;
 
 [TestClass]
 public class UnitTest1
