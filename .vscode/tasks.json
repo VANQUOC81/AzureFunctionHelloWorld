@@ -6,6 +6,7 @@
 			"command": "dotnet",
 			"args": [
 				"clean",
+				"${workspaceFolder}/Source/AzureFunctionHelloWorld.csproj",
 				"/property:GenerateFullPaths=true",
 				"/consoleloggerparameters:NoSummary"
 			],
@@ -17,6 +18,7 @@
 			"command": "dotnet",
 			"args": [
 				"build",
+				"${workspaceFolder}/Source/AzureFunctionHelloWorld.csproj",
 				"/property:GenerateFullPaths=true",
 				"/consoleloggerparameters:NoSummary"
 			],
@@ -35,6 +37,7 @@
 				"clean",
 				"--configuration",
 				"Release",
+				"${workspaceFolder}/Source/AzureFunctionHelloWorld.csproj",
 				"/property:GenerateFullPaths=true",
 				"/consoleloggerparameters:NoSummary"
 			],
@@ -48,6 +51,7 @@
 				"publish",
 				"--configuration",
 				"Release",
+				"${workspaceFolder}/Source/AzureFunctionHelloWorld.csproj",
 				"/property:GenerateFullPaths=true",
 				"/consoleloggerparameters:NoSummary"
 			],
@@ -59,7 +63,7 @@
 			"type": "func",
 			"dependsOn": "build (functions)",
 			"options": {
-				"cwd": "${workspaceFolder}/bin/Debug/net7.0"
+				"cwd": "${workspaceFolder}/Source/bin/Debug/net7.0"
 			},
 			"command": "host start",
 			"isBackground": true,

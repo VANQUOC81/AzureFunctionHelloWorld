@@ -17,7 +17,7 @@
   </ItemGroup>
 
     <ItemGroup>
-    <ProjectReference Include="..\AzureFunctionHelloWorld.csproj" />
+    <ProjectReference Include="..\Source\AzureFunctionHelloWorld.csproj" />
   </ItemGroup>
 
 </Project>
