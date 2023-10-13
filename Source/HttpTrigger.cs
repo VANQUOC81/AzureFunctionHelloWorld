@@ -19,6 +19,7 @@ namespace Company.Function
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
+            // CreateResponse extension method is being called in unit test
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
 
@@ -31,6 +32,7 @@ namespace Company.Function
             else
             {
                 // If "name" query string variable is not provided, use a default message
+                // WriteString extension method is being called in unit test
                 response.WriteString("Welcome to Azure Functions!");
             }
 
