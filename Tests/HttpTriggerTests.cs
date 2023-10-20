@@ -3,11 +3,8 @@ using Microsoft.Extensions.Logging;
 using Company.Function;
 using Moq;
 using System.Net;
-using System.Text;
-using Microsoft.VisualStudio.TestPlatform.Common;
 using System.Security.Claims;
 using Microsoft.Azure.Functions.Worker;
-using static Tests.HttpTriggerTests;
 
 namespace Tests;
 
@@ -15,7 +12,7 @@ namespace Tests;
 public class HttpTriggerTests
 {
     [TestMethod]
-    public void Run_WithNameInQueryString_ShouldReturnExpectedResponse()
+    public void Run_WithNameInQueryString_ShouldReturnResponseWithName()
     {
         // Arrange
         var loggerFactory = new Mock<ILoggerFactory>();
@@ -44,7 +41,7 @@ public class HttpTriggerTests
     }
 
     [TestMethod]
-    public void Run_NoNameInQueryString_ShouldReturnExpectedResponse()
+    public void Run_NoNameInQueryString_ShouldReturnResponseWithoutName()
     {
         // Arrange
         var loggerFactory = new Mock<ILoggerFactory>();
